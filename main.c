@@ -209,14 +209,10 @@ int main() {
 
 	printf("\n\nPlease, choose desired access rights:\n\n1 - USER\n2 - ADMIN\n3 - Exit\n\n");
 	scanf("%d", &choice);
-		
-	if (choice == 3) {
-		return 0;
-	}
 	
 	printf("Password: ");
 	scanf("%s", password);
-		
+	
 	switch (choice) {
 		case 1:
 			sprintf(conn_info, "user='AAD admin' password=%s dbname=students_", password);
@@ -224,6 +220,8 @@ int main() {
 		case 2:
 			sprintf(conn_info, "user='AAD admin' password=%s dbname=students_", password);
 			break;
+		case 3:
+			return 0;
 	}
 
 	conn = PQconnectdb(conn_info);
